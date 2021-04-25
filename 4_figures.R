@@ -17,7 +17,7 @@ par(mfrow=c(1,2))
 
 #Creer l'histogramme : collaborations avant covid des membres du cours de BIO500 seulement
 hist(data_avant_covid$nb_collaborations,
-                          main = "Collaborations des membres du cours de BIO500 avant Covid-19",
+                          main = "Avant",
                           axes = FALSE,
                           xlab = "Nombre de collaborations",
                           xlim = c(0,35),
@@ -33,7 +33,7 @@ abline(h=c(0,3,6,9,12,15), lty=1, col="black")
 
 #Creer l'histogramme : collaborations apres covid des membres du cours de BIO500 seulement
 hist(data_apres_covid$nb_collaborations,
-                          main = "Collaborations des membres du cours de BIO500 apres Covid-19",
+                          main = "Après",
                           axes = FALSE,
                           xlab = "Nombre de collaborations",
                           xlim = c(0,35),
@@ -61,19 +61,22 @@ data_liens_cours <- data_liens_cours[order(data_liens_cours$coll_par_etudiant, d
 pdf("figure_collaborations_etudiant.pdf")
 
 #Creer le diagramme a bandes
-par(mar = c(1,5,5,1))
-par(cex.axis = 0.9)
-barplot(height=data_liens_cours$coll_par_etudiant,names.arg = data_liens_cours$cours, 
+par(mar = c(1,3,2,1))
+par(oma=c(1,1,1,1))
+par(cex.axis=0.80)
+
+barplot(height=data_liens_cours$coll_par_etudiant,names.arg = data_liens_cours$cours,
         axes = FALSE,
         horiz=TRUE,
         space=1,
         col = "deeppink",
-        cex.names=0.70, 
+        cex.names=0.70,
         las=1,
         border = "white"
 )
 axis(3)
 abline(v=c(0,1,2,3,4,5,6,7), lty=1)
+mtext("Nombre de collaborations par étudiant", side=3, outer=TRUE, cex=0.80)
 
 # Terminer le fichier de la figure
 dev.off()
