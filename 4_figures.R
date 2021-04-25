@@ -93,7 +93,7 @@ colnames(tableau_coequipier) <- c("Minimum", "Moyenne", "Maximum")
 
 # Exporter le tableau pour LateX
 tableau_coequipier_latex <- kable(tableau_coequipier, format="latex")
-writeLines(tableau_coequipier_latex, con="tableau_coequipier_latex", sep="\n", useBytes=FALSE)
+writeLines(tableau_coequipier_latex, con="tableau_coequipier_latex.tex", sep="\n", useBytes=FALSE)
 
 ###################################################
 # Création de la figure du réseau avec igraph
